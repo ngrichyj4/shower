@@ -1,4 +1,4 @@
-$redis = Redis.new
+$redis = Redis.new url: ENV['REDIS_URI']
 
 heartbeat_thread = Thread.new do
   while true
