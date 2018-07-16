@@ -2,6 +2,7 @@ class Shower::StreamController < ApplicationController
     include ActionController::Live
 
     before_action :close_db_connection
+    skip_filter *_process_action_callbacks.map(&:filter), except: :close_db_connection
 
     def index
       response.headers['Content-Type'] = 'text/event-stream'
