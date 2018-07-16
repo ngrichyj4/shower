@@ -24,7 +24,9 @@ class Shower::StreamController < ApplicationController
     private
 
     def close_db_connection
+     if(defined? ActiveRecord)
       ActiveRecord::Base.connection_pool.release_connection
+     end
     end
 
 end
