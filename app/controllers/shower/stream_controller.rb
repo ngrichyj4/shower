@@ -20,6 +20,7 @@ class Shower::StreamController < ApplicationController
       # stopping stream thread
       redis.quit
       response.stream.close
+      close_db_connection
     end
 
     private
