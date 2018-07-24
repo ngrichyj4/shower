@@ -27,6 +27,8 @@ class Shower::StreamController < ApplicationController
     def close_db_connection
      if(defined? ActiveRecord)
       ActiveRecord::Base.connection_pool.release_connection
+     elsif (defined? Mongoid)
+       Mongoid::Clients.disconnect
      end
     end
 
